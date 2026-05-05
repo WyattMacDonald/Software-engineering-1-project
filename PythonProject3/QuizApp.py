@@ -53,7 +53,7 @@ class appManager(Widget):
        if (page == 0):
            self.remove_widget(self.currentPage)
            newone = HomePage()
-           newone.setup(self)
+           newone.setup(self )
            self.currentPage = newone
            self.add_widget(newone)
        if (page == 1):
