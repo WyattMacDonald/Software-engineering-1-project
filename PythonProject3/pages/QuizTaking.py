@@ -28,10 +28,9 @@ class quizTaking(basePage):
 
         self.theQuiz = None
 
-    def testText(self):
-        return "wtf"
+
     def setup(self,parent):
-        print("setup")
+
         super().setup(parent)
 
         self.theQuiz = parent.Quizzes[parent.currentQuizindex]

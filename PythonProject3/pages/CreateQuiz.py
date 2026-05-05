@@ -133,7 +133,7 @@ class createQuiz(basePage):
         self.quizInfo.text = str(index+1) + " / "+ str(len(self.tests))
 
     def newQuestion(self,instance):
-        testQuestion = Question("t")
+        testQuestion = Question("")
         testQuestion.add_answer("")
 
         newQuestionEdit = QuestionEdit()

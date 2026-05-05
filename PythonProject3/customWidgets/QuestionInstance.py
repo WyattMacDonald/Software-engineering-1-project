@@ -68,7 +68,7 @@ class questionInstance(Widget):
         if self.type == 0:
             self.multiInput()
         if self.type == 1:
-            self.textAnswer = TextInput(multiline=False)
+            self.textAnswer = TextInput(multiline=False,size = (600,500))
             self.add_widget(self.textAnswer)
 
 
@@ -107,7 +107,7 @@ class questionInstance(Widget):
     def update(self):
         self.updateProperties()
         if self.image != None:
-            self.image.center = (self.center_x + self.sizeX / 2 - 200, self.center_y + self.sizeY / 2 - 200)
+            self.image.center = (self.center_x + self.sizeX / 2 - 200, self.center_y + self.sizeY / 2 - 140)
         if self.answers != None:
 
             lowestIndex = -1

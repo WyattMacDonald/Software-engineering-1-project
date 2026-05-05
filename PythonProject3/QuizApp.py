@@ -66,8 +66,8 @@ class appManager(Widget):
            self.remove_widget(self.currentPage)
            newone = quizTaking(center = self.center)
            newone.setup(self)
-           print("worked")
-           print(newone.testText())
+
+
            self.currentPage = newone
            self.add_widget(newone)
 

@@ -99,6 +99,7 @@ class QuestionEdit(Widget):
         self.add_widget(self.questionLabel)
 
         self.imageText = TextInput(multiline=False,size = (200,60))
+
         self.add_widget(self.imageText)
 
         self.ImageLabel = Label(text = "Insert Image link here\n(leave blank for no image): ")
@@ -107,6 +108,7 @@ class QuestionEdit(Widget):
 
 
         self.questionText = TextInput(multiline=False)
+        self.questionText.text = self.inputedQuestion.question_text
 
         self.questionText.size = (500,200)
         self.add_widget(self.questionText)
@@ -204,7 +206,7 @@ class QuestionEdit(Widget):
     def addAnswer(self,instance):
         NewAnswer = AnswerEditInstance()
         NewAnswer.update(len(self.questionInputs))
-        print("touched")
+
         self.questionContainer.add_widget(NewAnswer)
         self.questionInputs.append(NewAnswer)
 
