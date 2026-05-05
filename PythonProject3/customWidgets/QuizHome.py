@@ -21,6 +21,8 @@ class quizinstance(Widget):
         self.percentage = None
         self.killButton = None
         self.killme = False
+        self.warningLabel = None
+        self.warningPopuped = False
 
         self.Parent = parent
 
@@ -70,7 +72,13 @@ class quizinstance(Widget):
         self.add_widget(self.QuizName)
         self.add_widget(self.QuizScore)
     def kill(self,instance):
-        self.killme = True
+        if self.warningPopuped:
+            self.killme = True
+        else:
+            self.warningPopuped = True
+            self.warningLabel = Label(text="Are you sure?\nyou cant undo this")
+            self.warningLabel.color = (0.8,0.2,0.2,1)
+            self.add_widget(self.warningLabel)
     sizeX = NumericProperty(0)
     sizeY = NumericProperty(0)
     posX = NumericProperty(0)
@@ -91,4 +99,6 @@ class quizinstance(Widget):
         self.percentage.center = (self.center_x-100, self.center_y )
         self.takeQuiz.center = (self.center_x+(self.sizeX/2)-80, self.center_y-(self.sizeY/2)+30)
         self.killButton.center = (self.center_x+(self.sizeX/2)-25, self.center_y+(self.sizeY/2)-25)
+        if self.warningLabel != None:
+            self.warningLabel.center = (self.center_x+(self.sizeX/2)-25, self.center_y+(self.sizeY/2)+20)
         self.updateProperties()

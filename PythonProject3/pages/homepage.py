@@ -38,6 +38,9 @@ class HomePage(basePage):
 
         self.pageNumber = None
         self.imageTest = None
+        self.extraInfoButton = None
+        self.extraInfoText = None
+        self.infoOpen = False
 
 
 
@@ -62,7 +65,7 @@ class HomePage(basePage):
             self.pageCount = floor((len(parent.Quizzes)-1)/self.maxPerPage)
             self.setupQuizlist()
         else:
-            noQUiz = Label(text="There Appears to be no quizzes yet, Time to make some!")
+            noQUiz = Label(text="There Appears to be no quizzes yet, Time to make some!\nlittle tip: its boring using one format for the whole quiz try to use differnt formats!")
             noQUiz.center = (self.center_x, self.center_y+100)
             noQUiz.color = (0.6,0.6,0.6,1)
             self.add_widget(noQUiz)
@@ -99,6 +102,14 @@ class HomePage(basePage):
         self.pageNumber.center = (self.center_x, self.center_y + buttonYoff)
         self.pageNumber.color = (0,0,0,1)
         self.add_widget(self.pageNumber)
+
+        self.extraInfoButton = Button(text="Extra Info",size = (100,50))
+        self.extraInfoButton.center = (self.center_x-self.width/2-450, self.center_y + buttonYoff)
+        self.extraInfoButton.bind(on_press=self.extraInfoSHow)
+        self.add_widget(self.extraInfoButton)
+
+    def extraInfoSHow(self,instance):
+        self.infoOpen = not self.infoOpen
     def nextPage(self,instance):
         self.currentPage += 1
         if self.currentPage > (self.pageCount):
@@ -148,5 +159,14 @@ class HomePage(basePage):
                self.parent.Quizzes.pop(index)
            self.setup(self.Parent)
 
+
+        if self.infoOpen and self.extraInfoText == None:
+            self.extraInfoText = Label(text="Quizzes made: " + str(len(self.parent.Quizzes)))
+            self.extraInfoText.center = (self.center_x-self.width/2-450, self.center_y -350)
+            self.extraInfoText.color = (0.6,0.6,0.6,1)
+            self.add_widget(self.extraInfoText)
+        if not self.infoOpen and self.extraInfoText != None:
+            self.remove_widget(self.extraInfoText)
+            self.extraInfoText = None
 
 
